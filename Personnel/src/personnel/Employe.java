@@ -129,7 +129,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	 * @param password le nouveau password de l'employé. 
 	 */
 	
-	public void setPassword(String password)
+	public void setPassword(String password) 
 	{
 		this.password= password;
 	}
