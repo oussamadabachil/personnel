@@ -131,7 +131,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	
 	public void setPassword(String password)
 	{
-		this.password= password;
+		this.password = password;
 	}
 
 	/**
