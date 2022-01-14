@@ -100,6 +100,7 @@ public class LigueConsole
 					ligue.addEmploye(getString("nom : "), 
 						getString("prenom : "), getString("mail : "), 
 						getString("password : "));
+					
 				}
 		);
 	}
