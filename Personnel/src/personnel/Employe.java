@@ -61,6 +61,24 @@ public class Employe implements Serializable, Comparable<Employe>
 	 * Retourne le nom de l'employé.
 	 * @return le nom de l'employé. 
 	 */
+	public void setDateArrivee(Date dateArrivee) 
+	{
+		this.dateArrivee = dateArrivee;
+	}
+	
+	public Date getDateArrivee() 
+	{
+		return dateArrivee;
+	}
+	
+	public void setDateDepart (Date dateDepart) {
+		this.dateDepart = dateDepart;
+	}
+	
+	public Date getDateDepart() {
+		return dateDepart;
+		
+	}
 	
 	public String getNom()
 	{

@@ -26,7 +26,7 @@ public class GestionPersonnel implements Serializable
 	private static Passerelle passerelle = TYPE_PASSERELLE == JDBC ? new jdbc.JDBC() : new serialisation.Serialization();	
 	
 	/**
-	 * Retourne l'unique instance de cette classe.
+	 * Retourne l'unique instance de cetxte classe.
 	 * Crée cet objet s'il n'existe déjà.
 	 * @return l'unique objet de type {@link GestionPersonnel}.
 	 */
