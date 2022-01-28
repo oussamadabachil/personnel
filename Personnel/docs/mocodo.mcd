@@ -1,0 +1,5 @@
+EMPLOYE : idEmploye, nomEmploye, prenomEmploye, mailEmploye, mdpEmploye, dateArrivee, dateDepart, typeEmploye
+
+AJOUTER, 01 EMPLOYE, 0N LIGUE
+
+LIGUE: idLigue, nomLigue
