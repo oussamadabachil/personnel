@@ -2,6 +2,7 @@ package personnel;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Employé d'une ligue hébergée par la M2L. Certains peuvent 
@@ -77,8 +78,8 @@ public class Employe implements Serializable, Comparable<Employe>
 	
 	public LocalDate getDateDepart() {
 		return dateDepart;
-		
 	}
+	
 	
 	public String getNom()
 	{
