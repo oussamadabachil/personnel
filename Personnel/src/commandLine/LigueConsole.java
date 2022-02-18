@@ -99,6 +99,8 @@ public class LigueConsole
 		return new Option("ajouter un employé", "a", 
 				() -> 
 				{
+					int essai = 0;
+					int essaiMax = 3;
 					String nom, prenom, mail, password;
 					LocalDate dArrivee, dDepart;
 					
@@ -112,7 +114,8 @@ public class LigueConsole
 						dDepart = LocalDate.parse(getString("Date départ (YYYY-MM-DD) : "));
 						ligue.addEmploye(nom, prenom, mail, password, dArrivee, dDepart);
 					} catch (Exception e) {
-						System.out.println("Les dates ont été mal saisies.");
+						System.out.println("Les dates ont été mal saisies, réessayez..");
+						if (++essai == essaiMax) throw e;
 					}
 					
 				}
