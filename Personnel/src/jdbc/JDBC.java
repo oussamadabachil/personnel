@@ -37,7 +37,7 @@ public class JDBC implements Passerelle
 		GestionPersonnel gestionPersonnel = new GestionPersonnel();
 		try 
 		{
-			String requete = "select * from LIGUE";
+			String requete = "select * from ligue";
 			Statement instruction = connection.createStatement();
 			ResultSet ligues = instruction.executeQuery(requete);
 			while (ligues.next())
@@ -75,7 +75,7 @@ public class JDBC implements Passerelle
 		try 
 		{
 			PreparedStatement instruction;
-			instruction = connection.prepareStatement("insert into LIGUE (nomLigue) values(?)", Statement.RETURN_GENERATED_KEYS);
+			instruction = connection.prepareStatement("insert into ligue (nomLigue) values(?)", Statement.RETURN_GENERATED_KEYS);
 			instruction.setString(1, ligue.getNom());		
 			instruction.executeUpdate();
 			ResultSet id = instruction.getGeneratedKeys();
