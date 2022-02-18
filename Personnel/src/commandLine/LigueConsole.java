@@ -102,14 +102,19 @@ public class LigueConsole
         } 
     } catch (ParseException "La date d'arrivée ne peut pas se trouver avant la date de départ") {
     }*/
-		return new Option("ajouter un employ�", "a", 
+		return new Option("ajouter un employ�", "a", 
 				() -> 
 				{
+					String nom, prenom, mail, password;
+					LocalDate dArrivee = null, dDepart = null;
 					
-					ligue.addEmploye(getString("nom : "), 
-					getString("prenom : "), getString("mail : "), 
-					getString("password : "),
-					LocalDate.parse(getString("Date arrivee :")), LocalDate.parse(getString("Date de depart : ")));
+					nom = getString("nom : ");
+					prenom = getString("prenom : ");
+					mail = getString("mail : ");
+					password = getString("password : ");
+					dArrivee = LocalDate.parse(("Date Arrivee (YYYY-MM-DD) : "));
+					dDepart = LocalDate.parse(("Date Depart (YYYY-MM-DD) : "));
+					ligue.addEmploye(nom, prenom, mail, password, dArrivee, dDepart);
 					
 				}
 		);
