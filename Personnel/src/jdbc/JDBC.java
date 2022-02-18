@@ -28,7 +28,7 @@ public class JDBC implements Passerelle
 		{
 			System.out.println(e);
 		}
-		System.out.println("Bienvenue sur le PGI de Dolfi Corp :");
+		System.out.println("Bienvenue sur le PGI de Dolfi Corp \n");
 	}
 	
 	@Override
