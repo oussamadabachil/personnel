@@ -112,8 +112,10 @@ public class LigueConsole
 					prenom = getString("prenom : ");
 					mail = getString("mail : ");
 					password = getString("password : ");
-					dArrivee = LocalDate.parse(("Date Arrivee (YYYY-MM-DD) : "));
-					dDepart = LocalDate.parse(("Date Depart (YYYY-MM-DD) : "));
+					
+					dArrivee = LocalDate.parse(("Date arrivée (YYYY-MM-DD) : "));
+					dDepart = LocalDate.parse(("Date départ (YYYY-MM-DD) : "));
+					
 					ligue.addEmploye(nom, prenom, mail, password, dArrivee, dDepart);
 					
 				}
