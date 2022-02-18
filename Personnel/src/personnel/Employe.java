@@ -64,6 +64,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	 */
 	public void setDateArrivee(LocalDate dateArrivee) 
 	{
+		if(dateArrivee != null && dateDepart != null && dateArrivee.isBefore(dateDepart))
 		this.dateArrivee = dateArrivee;
 	}
 	
@@ -73,6 +74,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	}
 	
 	public void setDateDepart (LocalDate dateDepart) {
+		if(dateArrivee != null && dateDepart != null && dateArrivee.isBefore(dateDepart))
 		this.dateDepart = dateDepart;
 	}
 	

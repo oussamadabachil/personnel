@@ -94,7 +94,7 @@ public class JDBC implements Passerelle
 		try 
 		{
 			PreparedStatement instruction;
-			instruction = connection.prepareStatement("update ligue (nomLigue) values(?)", Statement.RETURN_GENERATED_KEYS);
+			instruction = connection.prepareStatement("update from ligue (nomLigue) values(?)", Statement.RETURN_GENERATED_KEYS);
 			instruction.setString(1, ligue.getNom());		
 			instruction.executeUpdate();
 			ResultSet id = instruction.getGeneratedKeys();
@@ -113,7 +113,7 @@ public class JDBC implements Passerelle
 		try 
 		{
 			PreparedStatement instruction;
-			instruction = connection.prepareStatement("select ligue (nomLigue) values(?)", Statement.RETURN_GENERATED_KEYS);
+			instruction = connection.prepareStatement("select from ligue (nomLigue) values(?)", Statement.RETURN_GENERATED_KEYS);
 			instruction.setString(1, ligue.getNom());		
 			instruction.executeUpdate();
 			ResultSet id = instruction.getGeneratedKeys();
@@ -132,7 +132,7 @@ public class JDBC implements Passerelle
 		try 
 		{
 			PreparedStatement instruction;
-			instruction = connection.prepareStatement("delete ligue (nomLigue) values(?)", Statement.RETURN_GENERATED_KEYS);
+			instruction = connection.prepareStatement("delete from ligue (nomLigue) values(?)", Statement.RETURN_GENERATED_KEYS);
 			instruction.setString(1, ligue.getNom());		
 			instruction.executeUpdate();
 			ResultSet id = instruction.getGeneratedKeys();
