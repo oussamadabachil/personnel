@@ -15,7 +15,8 @@ public class LigueConsole
 {
 	private GestionPersonnel gestionPersonnel;
 	private EmployeConsole employeConsole;
-
+	/*LocalDate dateArrivee ;
+	LocalDate dateDepart ;*/
 	public LigueConsole(GestionPersonnel gestionPersonnel, EmployeConsole employeConsole)
 	{
 		this.gestionPersonnel = gestionPersonnel;
@@ -92,23 +93,24 @@ public class LigueConsole
 				(element) -> editerLigue(element)
 				);
 	}
-	LocalDate dateArrivee ;
-	LocalDate dateDepart ;
+
 	private Option ajouterEmploye(final Ligue ligue)
-	{
-		return new Option("ajouter un employ�", "a",
+	{/*
+		if(dateArrivee.before(dateDepart)){
+        System.out.println(
+                "Saisie des dates correct");
+        } 
+    } catch (ParseException "La date d'arrivée ne peut pas se trouver avant la date de départ") {
+    }*/
+		return new Option("ajouter un employ�", "a", 
 				() -> 
 				{
 					
 					ligue.addEmploye(getString("nom : "), 
 					getString("prenom : "), getString("mail : "), 
-					getString("password : "), dateArrivee.parse(getString("Date arriv�e :")), dateDepart.parse(getString("Date de depart : ")));
-					if(dateArrivee.before(dateDepart)){
-		                System.out.println(
-		                    "Date-1 is before Date-2");
-		            } 
-		        } catch (ParseException ex) {
-		        }
+					getString("password : "),
+					LocalDate.parse(getString("Date arrivee :")), LocalDate.parse(getString("Date de depart : ")));
+					
 				}
 		);
 	}

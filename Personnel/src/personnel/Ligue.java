@@ -62,6 +62,21 @@ public class Ligue implements Serializable, Comparable<Ligue>
 		this.nom = nom;
 	}
 
+	public String getPrenom()
+	{
+		return nom;
+	}
+
+	/**
+	 * Change le nom.
+	 * @param nom le nouveau nom de la ligue.
+	 */
+
+	public void setNom(String nom)
+	{
+		this.nom = nom;
+	}
+
 	/**
 	 * Retourne l'administrateur de la ligue.
 	 * @return l'administrateur de la ligue.
