@@ -88,4 +88,61 @@ public class JDBC implements Passerelle
 			throw new SauvegardeImpossible(exception);
 		}		
 	}
+	@Override
+	public int update(Ligue ligue) throws SauvegardeImpossible 
+	{
+		try 
+		{
+			PreparedStatement instruction;
+			instruction = connection.prepareStatement("update ligue (nomLigue) values(?)", Statement.RETURN_GENERATED_KEYS);
+			instruction.setString(1, ligue.getNom());		
+			instruction.executeUpdate();
+			ResultSet id = instruction.getGeneratedKeys();
+			id.next();
+			return id.getInt(1);
+		} 
+		catch (SQLException exception) 
+		{
+			exception.printStackTrace();
+			throw new SauvegardeImpossible(exception);
+		}		
+	}
+
+	@Override
+	public int select(Ligue ligue) throws SauvegardeImpossible {
+		try 
+		{
+			PreparedStatement instruction;
+			instruction = connection.prepareStatement("select ligue (nomLigue) values(?)", Statement.RETURN_GENERATED_KEYS);
+			instruction.setString(1, ligue.getNom());		
+			instruction.executeUpdate();
+			ResultSet id = instruction.getGeneratedKeys();
+			id.next();
+			return id.getInt(1);
+		} 
+		catch (SQLException exception) 
+		{
+			exception.printStackTrace();
+			throw new SauvegardeImpossible(exception);
+		}		
+	}
+
+	@Override
+	public int delete(Ligue ligue) throws SauvegardeImpossible {
+		try 
+		{
+			PreparedStatement instruction;
+			instruction = connection.prepareStatement("delete ligue (nomLigue) values(?)", Statement.RETURN_GENERATED_KEYS);
+			instruction.setString(1, ligue.getNom());		
+			instruction.executeUpdate();
+			ResultSet id = instruction.getGeneratedKeys();
+			id.next();
+			return id.getInt(1);
+		} 
+		catch (SQLException exception) 
+		{
+			exception.printStackTrace();
+			throw new SauvegardeImpossible(exception);
+		}		
+	}
 }
