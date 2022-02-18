@@ -108,9 +108,9 @@ public class LigueConsole
 					password = getString("Mot de passe : ");
 					
 					try {
-					dArrivee = LocalDate.parse(getString("Date arrivée (YYYY-MM-DD) : "));
-					dDepart = LocalDate.parse(getString("Date départ (YYYY-MM-DD) : "));
-					ligue.addEmploye(nom, prenom, mail, password, dArrivee, dDepart);
+						dArrivee = LocalDate.parse(getString("Date arrivée (YYYY-MM-DD) : "));
+						dDepart = LocalDate.parse(getString("Date départ (YYYY-MM-DD) : "));
+						ligue.addEmploye(nom, prenom, mail, password, dArrivee, dDepart);
 					} catch (Exception e) {
 						System.out.println("Les dates ont été mal saisies.");
 					}
