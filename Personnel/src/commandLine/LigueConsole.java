@@ -95,26 +95,20 @@ public class LigueConsole
 	}
 
 	private Option ajouterEmploye(final Ligue ligue)
-	{/*
-		if(dateArrivee.before(dateDepart)){
-        System.out.println(
-                "Saisie des dates correct");
-        } 
-    } catch (ParseException "La date d'arrivÃ©e ne peut pas se trouver avant la date de dÃ©part") {
-    }*/
+	{
 		return new Option("ajouter un employé", "a", 
 				() -> 
 				{
 					String nom, prenom, mail, password;
-					LocalDate dArrivee = null, dDepart = null;
+					LocalDate dArrivee, dDepart;
 					
-					nom = getString("nom : ");
-					prenom = getString("prenom : ");
-					mail = getString("mail : ");
-					password = getString("password : ");
+					nom = getString("Nom : ");
+					prenom = getString("Prénom : ");
+					mail = getString("Mail : ");
+					password = getString("Mot de passe : ");
 					
-					dArrivee = LocalDate.parse(("Date arrivée (YYYY-MM-DD) : "));
-					dDepart = LocalDate.parse(("Date départ (YYYY-MM-DD) : "));
+					dArrivee = LocalDate.parse(getString("Date arrivée (YYYY-MM-DD) : "));
+					dDepart = LocalDate.parse(getString("Date départ (YYYY-MM-DD) : "));
 					
 					ligue.addEmploye(nom, prenom, mail, password, dArrivee, dDepart);
 					
@@ -144,7 +138,7 @@ public class LigueConsole
 	
 	private List<Employe> changerAdministrateur(final Ligue ligue)
 	{
-		return new List<>("Changer l'administrateur de la ligue", "e", 
+		return new List<>("Changer l'administrateur de la ligue", "o", 
 				() -> new ArrayList<>(ligue.getEmployes()), 
 				(index, element) -> {ligue.setAdministrateur(element);}
 				);
