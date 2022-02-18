@@ -25,7 +25,7 @@ public class LigueConsole
 
 	Menu menuLigues()
 	{
-		Menu menu = new Menu("Gï¿½rer les ligues", "l");
+		Menu menu = new Menu("Gérer les ligues", "l");
 		menu.add(afficherLigues());
 		menu.add(ajouterLigue());
 		menu.add(selectionnerLigue());
@@ -44,7 +44,7 @@ public class LigueConsole
 				() -> 
 				{
 					System.out.println(ligue);
-					System.out.println("administrï¿½e par " + ligue.getAdministrateur());
+					System.out.println("administré par " + ligue.getAdministrateur());
 				}
 		);
 	}
@@ -88,7 +88,7 @@ public class LigueConsole
 
 	private List<Ligue> selectionnerLigue()
 	{
-		return new List<Ligue>("Sï¿½lectionner une ligue", "e", 
+		return new List<Ligue>("Sélectionner une ligue", "e", 
 				() -> new ArrayList<>(gestionPersonnel.getLigues()),
 				(element) -> editerLigue(element)
 				);
@@ -96,7 +96,7 @@ public class LigueConsole
 
 	private Option ajouterEmploye(final Ligue ligue)
 	{
-		return new Option("ajouter un employé", "a", 
+		return new Option("Ajouter un employé", "a", 
 				() -> 
 				{
 					int essai = 0;
@@ -114,7 +114,7 @@ public class LigueConsole
 						dDepart = LocalDate.parse(getString("Date départ (YYYY-MM-DD) : "));
 						ligue.addEmploye(nom, prenom, mail, password, dArrivee, dDepart);
 					} catch (Exception e) {
-						System.out.println("Les dates ont été mal saisies, réessayez..");
+						System.out.println("Les dates ont été mal saisies, réessayez la création de l'utilisateur..");
 						if (++essai == essaiMax) throw e;
 					}
 					
