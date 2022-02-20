@@ -25,7 +25,7 @@ public class LigueConsole
 
 	Menu menuLigues()
 	{
-		Menu menu = new Menu("Gérer les ligues", "l");
+		Menu menu = new Menu("GÃ©rer les ligues", "l");
 		menu.add(afficherLigues());
 		menu.add(ajouterLigue());
 		menu.add(selectionnerLigue());
@@ -44,13 +44,13 @@ public class LigueConsole
 				() -> 
 				{
 					System.out.println(ligue);
-					System.out.println("administré par " + ligue.getAdministrateur());
+					System.out.println("AdministrÃ© par " + ligue.getAdministrateur());
 				}
 		);
 	}
 	private Option afficherEmployes(final Ligue ligue)
 	{
-		return new Option("Afficher les employes", "l", () -> {System.out.println(ligue.getEmployes());});
+		return new Option("Afficher les employÃ©s", "l", () -> {System.out.println(ligue.getEmployes());});
 	}
 
 	private Option ajouterLigue()
@@ -88,7 +88,7 @@ public class LigueConsole
 
 	private List<Ligue> selectionnerLigue()
 	{
-		return new List<Ligue>("Sélectionner une ligue", "e", 
+		return new List<Ligue>("SÃ©lectionner une ligue", "e", 
 				() -> new ArrayList<>(gestionPersonnel.getLigues()),
 				(element) -> editerLigue(element)
 				);
@@ -96,7 +96,7 @@ public class LigueConsole
 
 	private Option ajouterEmploye(final Ligue ligue)
 	{
-		return new Option("Ajouter un employé", "a", 
+		return new Option("Ajouter un employï¿½", "a", 
 				() -> 
 				{
 					int essai = 0;
@@ -105,16 +105,19 @@ public class LigueConsole
 					LocalDate dArrivee, dDepart;
 					
 					nom = getString("Nom : ");
-					prenom = getString("Prénom : ");
+					prenom = getString("PrÃ©nom : ");
 					mail = getString("Mail : ");
 					password = getString("Mot de passe : ");
 					while (essai < essaiMax) {
 						try {
-							dArrivee = LocalDate.parse(getString("Date arrivée (YYYY-MM-DD) : "));
-							dDepart = LocalDate.parse(getString("Date départ (YYYY-MM-DD) : "));
+							dArrivee = LocalDate.parse(getString("Date arrivï¿½e (YYYY-MM-DD) : "));
+							dDepart = LocalDate.parse(getString("Date dï¿½part (YYYY-MM-DD) : "));
 							ligue.addEmploye(nom, prenom, mail, password, dArrivee, dDepart);
 						} catch (Exception e) {
-							System.out.println("Les dates ont été mal saisies, veuillez réessayez ...");
+							System.out.println("Les dates ont Ã©tÃ© mal saisies, veuillez rÃ©essayez ...");
+							essai++;
+							if (essai == 3)
+							System.out.println("Vous avez dÃ©passÃ© le nombre d'essai maximum \n\\nVeuillez recommencez..");
 						}
 					}
 				}
@@ -124,7 +127,7 @@ public class LigueConsole
 	
 	private Menu gererEmployes(Ligue ligue)
 	{
-		Menu menu = new Menu("Gérer les employés de " + ligue.getNom(), "e");
+		Menu menu = new Menu("Gï¿½rer les employÃ©s de " + ligue.getNom(), "e");
 		menu.add(afficherEmployes(ligue));
 		menu.add(ajouterEmploye(ligue));
 		menu.add(modifierEmploye(ligue));
@@ -135,7 +138,7 @@ public class LigueConsole
 
 	private List<Employe> supprimerEmploye(final Ligue ligue)
 	{
-		return new List<>("Supprimer un employï¿½", "s", 
+		return new List<>("Supprimer un employÃ©", "s", 
 				() -> new ArrayList<>(ligue.getEmployes()),
 				(index, element) -> {element.remove();}
 				);
@@ -151,7 +154,7 @@ public class LigueConsole
 
 	private List<Employe> modifierEmploye(final Ligue ligue)
 	{
-		return new List<>("Modifier un employé", "e", 
+		return new List<>("Modifier un employÃ©", "e", 
 				() -> new ArrayList<>(ligue.getEmployes()),
 				employeConsole.editerEmploye()
 				);
