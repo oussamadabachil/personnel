@@ -108,16 +108,15 @@ public class LigueConsole
 					prenom = getString("Prénom : ");
 					mail = getString("Mail : ");
 					password = getString("Mot de passe : ");
-					
-					try {
-						dArrivee = LocalDate.parse(getString("Date arrivée (YYYY-MM-DD) : "));
-						dDepart = LocalDate.parse(getString("Date départ (YYYY-MM-DD) : "));
-						ligue.addEmploye(nom, prenom, mail, password, dArrivee, dDepart);
-					} catch (Exception e) {
-						System.out.println("Les dates ont été mal saisies, réessayez la création de l'utilisateur..");
-						if (++essai == essaiMax) throw e;
+					while (essai < essaiMax) {
+						try {
+							dArrivee = LocalDate.parse(getString("Date arrivée (YYYY-MM-DD) : "));
+							dDepart = LocalDate.parse(getString("Date départ (YYYY-MM-DD) : "));
+							ligue.addEmploye(nom, prenom, mail, password, dArrivee, dDepart);
+						} catch (Exception e) {
+							System.out.println("Les dates ont été mal saisies, veuillez réessayez ...");
+						}
 					}
-					
 				}
 		);
 	}
