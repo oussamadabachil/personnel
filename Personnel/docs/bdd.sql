@@ -1,19 +1,19 @@
 CREATE TABLE EMPLOYE (
   idEmploye INT AUTO_INCREMENT,
-  nomEmploye VARCHAR(42),
-  prenomEmploye VARCHAR(42),
-  mailEmploye VARCHAR(42),
-  mdpEmploye VARCHAR(42),
-  dateArrivee DATE,
-  dateDepart DATE,
-  typeEmploye TINYINT,
-  idLigue INT,
+  nomEmploye VARCHAR(42) NOT NULL,
+  prenomEmploye VARCHAR(42) NOT NULL,
+  mailEmploye VARCHAR(42) NOT NULL,
+  mdpEmploye VARCHAR(42) NOT NULL,
+  dateArrivee DATETIME,
+  dateDepart DATETIME,
+  typeEmploye TINYINT DEFAULT 0,
+  idLigue INT NOT NULL,
   PRIMARY KEY (idEmploye)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE LIGUE (
   idLigue INT AUTO_INCREMENT,
-  nomLigue VARCHAR(42),
+  nomLigue VARCHAR(42) NOT NULL,
   PRIMARY KEY (idLigue)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

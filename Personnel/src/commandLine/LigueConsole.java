@@ -15,8 +15,6 @@ public class LigueConsole
 {
 	private GestionPersonnel gestionPersonnel;
 	private EmployeConsole employeConsole;
-	/*LocalDate dateArrivee ;
-	LocalDate dateDepart ;*/
 	public LigueConsole(GestionPersonnel gestionPersonnel, EmployeConsole employeConsole)
 	{
 		this.gestionPersonnel = gestionPersonnel;
@@ -110,14 +108,14 @@ public class LigueConsole
 					password = getString("Mot de passe : ");
 					while (essai < essaiMax) {
 						try {
-							dArrivee = LocalDate.parse(getString("Date arriv�e (YYYY-MM-DD) : "));
-							dDepart = LocalDate.parse(getString("Date d�part (YYYY-MM-DD) : "));
+							dArrivee = LocalDate.parse(getString("Date arrivée (YYYY-MM-DD) : "));
+							dDepart = LocalDate.parse(getString("Date départ (YYYY-MM-DD) : "));
 							ligue.addEmploye(nom, prenom, mail, password, dArrivee, dDepart);
 						} catch (Exception e) {
 							System.out.println("Les dates ont été mal saisies, veuillez réessayez ...");
 							essai++;
-							if (essai == 3)
-							System.out.println("Vous avez dépassé le nombre d'essai maximum \n\\nVeuillez recommencez..");
+							if (essai == 2)
+							System.out.println("Vous avez dépassé le nombre d'essai maximum \nVeuillez recommencez..");
 						}
 					}
 				}

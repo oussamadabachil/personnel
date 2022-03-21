@@ -108,9 +108,9 @@ public class GestionPersonnel implements Serializable
 		return passerelle.insert(ligue);
 	}
 	
-	int delete(Ligue ligue) throws SauvegardeImpossible
+	void delete(Ligue ligue) throws SauvegardeImpossible
 	{
-		return passerelle.delete(ligue);
+		passerelle.delete(ligue);
 	}
 	
 	int update(Ligue ligue) throws SauvegardeImpossible
