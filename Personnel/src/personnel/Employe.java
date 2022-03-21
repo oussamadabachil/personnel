@@ -159,6 +159,10 @@ public class Employe implements Serializable, Comparable<Employe>
 	{
 		this.password = password;
 	}
+	
+	public String getPassword(String password) {
+		return password;
+	}
 
 	/**
 	 * Retourne la ligue à laquelle l'employé est affecté.
