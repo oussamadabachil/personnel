@@ -3,6 +3,8 @@ package personnel;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import jdbc.JDBC;
+
 /**
  * Employé d'une ligue hébergée par la M2L. Certains peuvent 
  * être administrateurs des employés de leur ligue.
@@ -160,7 +162,7 @@ public class Employe implements Serializable, Comparable<Employe>
 		this.password = password;
 	}
 	
-	public String getPassword(String password) {
+	public String getPassword() {
 		return password;
 	}
 
@@ -216,4 +218,5 @@ public class Employe implements Serializable, Comparable<Employe>
 			res += ligue.toString();
 		return res + ")";
 	}
+
 }

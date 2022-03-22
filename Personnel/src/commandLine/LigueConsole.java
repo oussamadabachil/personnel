@@ -94,11 +94,11 @@ public class LigueConsole
 
 	private Option ajouterEmploye(final Ligue ligue)
 	{
-		return new Option("Ajouter un employ�", "a", 
+		return new Option("Ajouter un employé", "a", 
 				() -> 
 				{
-					int essai = 0;
-					int essaiMax = 3;
+					/* int essai = 0;
+					int essaiMax = 3; */
 					String nom, prenom, mail, password;
 					LocalDate dArrivee, dDepart;
 					
@@ -106,17 +106,12 @@ public class LigueConsole
 					prenom = getString("Prénom : ");
 					mail = getString("Mail : ");
 					password = getString("Mot de passe : ");
-					while (essai < essaiMax) {
-						try {
-							dArrivee = LocalDate.parse(getString("Date arrivée (YYYY-MM-DD) : "));
-							dDepart = LocalDate.parse(getString("Date départ (YYYY-MM-DD) : "));
-							ligue.addEmploye(nom, prenom, mail, password, dArrivee, dDepart);
-						} catch (Exception e) {
-							System.out.println("Les dates ont été mal saisies, veuillez réessayez ...");
-							essai++;
-							if (essai == 2)
-							System.out.println("Vous avez dépassé le nombre d'essai maximum \nVeuillez recommencez..");
-						}
+					try {
+						dArrivee = LocalDate.parse(getString("Date arrivée (YYYY-MM-DD) : "));
+						dDepart = LocalDate.parse(getString("Date départ (YYYY-MM-DD) : "));
+						ligue.addEmploye(nom, prenom, mail, password, dArrivee, dDepart);
+					} catch (Exception e) {
+						System.out.println("Les dates ont été mal saisies, veuillez réessayez ...");
 					}
 				}
 		);
@@ -160,7 +155,11 @@ public class LigueConsole
 	
 	private Option supprimer(Ligue ligue)
 	{
-		return new Option("Supprimer", "d", () -> {ligue.remove();});
+		return new Option("Supprimer", "d", () -> {try {
+			ligue.remove();
+		} catch (SauvegardeImpossible e) {
+			e.printStackTrace();
+		}});
 	}
 	
 }
