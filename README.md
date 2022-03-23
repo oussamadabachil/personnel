@@ -1,3 +1,9 @@
+<div align="center">
+
+# Personnel - Projet PGI <br> | BTS SIO SLAM2 |
+
+</div>
+
 # Logiciel de gestion de personnel de ligues
 
 
