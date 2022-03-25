@@ -2,6 +2,7 @@ package commandLine;
 
 import static commandLineMenus.rendering.examples.util.InOut.getString;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -95,13 +96,15 @@ public class LigueConsole
 	
 	private Option ajouterEmploye(final Ligue ligue)
 	{
+		String dateFormat = "dd/MM/yyyy";
+        SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
+        sdf.setLenient(false);
 		return new Option("ajouter un employé", "a",
 				() -> 
 				{
-					ligue.addEmploye(getString("nom : "), 
-					getString("prenom : "), getString("mail : "), 
-					getString("password : "), LocalDate.parse(getString("Date arrivée :")), LocalDate.parse(getString("Date de depart : ")));
-					
+						ligue.addEmploye(getString("nom : "), 
+						getString("prenom : "), getString("mail : "), 
+						getString("password : "), LocalDate.parse(getString("Date arrivée :")), LocalDate.parse(getString("Date de depart : ")));
 				}
 		);
 	}
