@@ -6,12 +6,18 @@ import commandLineMenus.ListOption;
 import commandLineMenus.Menu;
 import commandLineMenus.Option;
 import personnel.Employe;
+import java.awt.*;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+import java.awt.*; 
 
 public class EmployeConsole 
 {
 	private Option afficher(final Employe employe)
 	{
-		return new Option("Afficher l'employÈ", "l", () -> {System.out.println(employe);});
+		return new Option("Afficher l'employÔøΩ", "l", () -> {System.out.println(employe);});
 	}
 
 	ListOption<Employe> editerEmploye()
@@ -21,7 +27,7 @@ public class EmployeConsole
 
 	Option editerEmploye(Employe employe)
 	{
-			Menu menu = new Menu("GÈrer le compte " + employe.getNom(), "c");
+			Menu menu = new Menu("GÔøΩrer le compte " + employe.getNom(), "c");
 			menu.add(afficher(employe));
 			menu.add(changerNom(employe));
 			menu.add(changerPrenom(employe));
@@ -40,7 +46,7 @@ public class EmployeConsole
 	
 	private Option changerPrenom(final Employe employe)
 	{
-		return new Option("Changer le prÈnom", "p", () -> {employe.setPrenom(getString("Nouveau prÈnom : "));});
+		return new Option("Changer le prÔøΩnom", "p", () -> {employe.setPrenom(getString("Nouveau prÔøΩnom : "));});
 	}
 	
 	private Option changerMail(final Employe employe)
@@ -52,6 +58,23 @@ public class EmployeConsole
 	{
 		return new Option("Changer le password", "x", () -> {employe.setPassword(getString("Nouveau password : "));});
 	}
+	/*
+	 public static void main(String [ ] arg) { 
+		  JFrame f=new JFrame("Changer Nom");  
+		    JButton b=new JButton("Changer Nom"); 
+		    JFrame c=new JFrame("Changer Nom");  
+		    JButton d=new JButton("Changer Pr√©nom");  
+		    b.setBounds(50,100,95,30);  
+		    f.add(b); 
+		    c.add(c);
+		    f.setSize(400,400);  
+		    f.setLayout(null);  
+		    f.setVisible(true);   
+		   } 
+		   
+		   */
 	
-
 }
+
+
+
