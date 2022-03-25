@@ -3,6 +3,8 @@ package personnel;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import jdbc.JDBC;
+
 /**
  * Employé d'une ligue hébergée par la M2L. Certains peuvent 
  * être administrateurs des employés de leur ligue.
@@ -63,6 +65,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	 */
 	public void setDateArrivee(LocalDate dateArrivee) 
 	{
+		if(dateArrivee != null && dateDepart != null && dateArrivee.isBefore(dateDepart))
 		this.dateArrivee = dateArrivee;
 	}
 	
@@ -72,13 +75,14 @@ public class Employe implements Serializable, Comparable<Employe>
 	}
 	
 	public void setDateDepart (LocalDate dateDepart) {
+		if(dateArrivee != null && dateDepart != null && dateDepart.isAfter(dateArrivee))
 		this.dateDepart = dateDepart;
 	}
 	
 	public LocalDate getDateDepart() {
 		return dateDepart;
-		
 	}
+	
 	
 	public String getNom()
 	{
@@ -157,6 +161,10 @@ public class Employe implements Serializable, Comparable<Employe>
 	{
 		this.password = password;
 	}
+	
+	public String getPassword() {
+		return password;
+	}
 
 	/**
 	 * Retourne la ligue à laquelle l'employé est affecté.
@@ -166,6 +174,11 @@ public class Employe implements Serializable, Comparable<Employe>
 	public Ligue getLigue()
 	{
 		return ligue;
+	}
+	
+	public int getIDLigue()
+	{
+		return ligue.getId();
 	}
 
 	/**
@@ -205,4 +218,5 @@ public class Employe implements Serializable, Comparable<Employe>
 			res += ligue.toString();
 		return res + ")";
 	}
+
 }

@@ -94,14 +94,38 @@ public class GestionPersonnel implements Serializable
 		return ligue;
 	}
 
-	void remove(Ligue ligue)
+	void remove(Ligue ligue) throws SauvegardeImpossible
 	{
+		gestionPersonnel.delete(ligue);
 		ligues.remove(ligue);
+	}
+	int select(Ligue ligue) throws SauvegardeImpossible
+	{
+		return passerelle.select(ligue);
 	}
 	
 	int insert(Ligue ligue) throws SauvegardeImpossible
 	{
 		return passerelle.insert(ligue);
+	}
+	
+	void delete(Ligue ligue) throws SauvegardeImpossible
+	{
+		passerelle.delete(ligue);
+	}
+	
+	void update(Ligue ligue) throws SauvegardeImpossible
+	{
+		passerelle.update(ligue);
+	}
+	
+	void updateEmploye(Employe employe) throws SauvegardeImpossible
+	{
+		passerelle.updateEmp(employe);
+	}
+	 void delete(Employe employe) throws SauvegardeImpossible
+	{
+	   passerelle.deleteEmp(employe);
 	}
 
 	/**

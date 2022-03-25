@@ -30,7 +30,7 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	Ligue(GestionPersonnel gestionPersonnel, String nom) throws SauvegardeImpossible
 	{
 		this(gestionPersonnel, -1, nom);
-		this.id = gestionPersonnel.insert(this); 
+		this.id = gestionPersonnel.insert(this);
 	}
 
 	Ligue(GestionPersonnel gestionPersonnel, int id, String nom)
@@ -46,8 +46,22 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	 * Retourne le nom de la ligue.
 	 * @return le nom de la ligue.
 	 */
+	
+	public int getId() {
+		return id;
+	}
 
 	public String getNom()
+	{
+		return nom;
+	}
+
+	/**
+	 * Change le nom.
+	 * @param nom le nouveau nom de la ligue.
+	 */
+
+	public String getPrenom()
 	{
 		return nom;
 	}
@@ -123,9 +137,10 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	/**
 	 * Supprime la ligue, entraîne la suppression de tous les employés
 	 * de la ligue.
+	 * @throws SauvegardeImpossible 
 	 */
 	
-	public void remove()
+	public void remove() throws SauvegardeImpossible
 	{
 		gestionPersonnel.remove(this);
 	}
