@@ -7,7 +7,7 @@ import static commandLineMenus.rendering.examples.util.InOut.*;
 public class PersonnelConsole
 {
 	private GestionPersonnel gestionPersonnel;
-	LigueConsole ligueConsole;
+	 LigueConsole ligueConsole;
 	EmployeConsole employeConsole;
 	
 	public PersonnelConsole(GestionPersonnel gestionPersonnel)
@@ -71,11 +71,11 @@ public class PersonnelConsole
 		return ok;
 	}
 	
-	public static void main(String[] args)
+	/*public static void main(String[] args)
 	{
 		PersonnelConsole personnelConsole = 
 				new PersonnelConsole(GestionPersonnel.getGestionPersonnel());
 		if (personnelConsole.verifiePassword())
 			personnelConsole.start();
-	}
+	}*/
 }
