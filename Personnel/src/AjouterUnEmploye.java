@@ -46,7 +46,7 @@ public class AjouterUnEmploye {
 	{
 		JFrame employeAdd = new JFrame();
 		employeAdd.setTitle("Ajouter un employe");
-		employeAdd.setSize(700,700);
+		employeAdd.setSize(1080,1920);
 		employeAdd.setLocationRelativeTo(null);
 		employeAdd.setJMenuBar(menuBar());
 		employeAdd.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -56,13 +56,9 @@ public class AjouterUnEmploye {
 	 private JMenuBar menuBar()
 	 {
 		 JMenuBar menubar = new JMenuBar();
-		 menubar.setPreferredSize(new Dimension(60,60));
+		 menubar.setPreferredSize(new Dimension(80,80));
 		 JMenu menu = new JMenu("Quitter");
-		 menu.setFont(new Font("Serif", Font.BOLD, 20));
-		 menu.setSize(70,70);
-		 menu.setForeground(Color.decode("#caca"));
 		 menubar.add(menu);
-		 menubar.setBackground(Color.decode("0F0F0F"));
 		return menubar;
 	 }
 
@@ -74,7 +70,7 @@ public class AjouterUnEmploye {
 		JLabel nomL = new JLabel("Nom :");
 		JLabel prenomL = new JLabel("Prenom :");
 		JLabel emailL = new JLabel("Email :");
-		JLabel passwordL = new JLabel("Password :");
+		JLabel passwordL = new JLabel("Mot de passe :");
 		JLabel dateArriveeL = new JLabel("Date d'arrivee :");
 		JLabel dateDepartL = new JLabel("Date de depart :");
 
