@@ -31,6 +31,7 @@ public class JDBC implements Passerelle
 		System.out.println("Bienvenue sur le PGI de M2L \n");
 	}
 	
+	// TODO : Ajouter deuxième boucle pour charger les employés (si type = 1 alors Admin de sa Ligue)
 	@Override
 	public GestionPersonnel getGestionPersonnel() 
 	{
@@ -94,9 +95,9 @@ public class JDBC implements Passerelle
 		try 
 		{
 			PreparedStatement instruction;
-			instruction = connection.prepareStatement("UPDATE ligue SET nomLigue = ? WHERE numLigue = ?");
+			instruction = connection.prepareStatement("UPDATE ligue SET nomLigue = ? WHERE idLigue = ?");
 			instruction.setString(1, ligue.getNom());
-			instruction.setInt(2, ligue.getId());
+			instruction.setInt(2, ligue.getId());	
 			instruction.executeUpdate();
 		} 
 		catch (SQLException exception) 
@@ -134,8 +135,6 @@ public class JDBC implements Passerelle
 			instruction = connection.prepareStatement("delete from ligue where nomLigue = ?");
 			instruction.setString(1, ligue.getNom());		
 			instruction.executeUpdate();
-			
-			System.out.println("La ligue " + ligue.getNom() + " a été supprimée avec succès.");
 		} 
 		catch (SQLException exception) 
 		{
@@ -149,9 +148,8 @@ public class JDBC implements Passerelle
 		try 
 		{
 			PreparedStatement instruction;
-			instruction = connection.prepareStatement("select nomEmploye, prenomEmploye from employe where nomEmploye = (nomEmploye) AND prenomEmploye = (prenomEmploye) values(?,?)", Statement.RETURN_GENERATED_KEYS);
-			instruction.setString(1, employe.getNom());
-			instruction.setString(2, employe.getPrenom());
+			instruction = connection.prepareStatement("select * from employe where idLigue = ?", Statement.RETURN_GENERATED_KEYS);
+			instruction.setInt(1, employe.getLigue().getId());
 			instruction.executeUpdate();
 			ResultSet id = instruction.getGeneratedKeys();
 			id.next();
@@ -170,7 +168,7 @@ public class JDBC implements Passerelle
 		try 
 		{
 			PreparedStatement instruction;
-			instruction = connection.prepareStatement("insert int employe (nomEmploye, prenomEmploye, mailEmploye, mdpEmploye, dateArrivee, dateDepart, idLigue) values(?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+			instruction = connection.prepareStatement("insert into employe (nomEmploye, prenomEmploye, mailEmploye, mdpEmploye, dateArrivee, dateDepart, idLigue) values(?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
 			instruction.setString(1, employe.getNom());		
 			instruction.setString(2, employe.getPrenom());	
 			instruction.setString(3, employe.getMail());
@@ -201,8 +199,7 @@ public class JDBC implements Passerelle
 			instruction.setString(2, employe.getPrenom());
 			instruction.setString(3, employe.getMail());
 			instruction.setString(4, employe.getPassword());
-			instruction.setString(5, employe.getDateArrivee() == null ? null :  String.valueOf(employe.getDateArrivee()));
-			instruction.setInt(6, employe.getLigue().getId());
+			
 			instruction.executeUpdate();
 		} 
 		catch (SQLException exception) 
@@ -229,4 +226,5 @@ public class JDBC implements Passerelle
 			throw new SauvegardeImpossible(exception);
 		}		
 	}
+
 }

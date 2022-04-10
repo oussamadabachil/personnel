@@ -2,6 +2,7 @@ package personnel;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.SortedSet;
 
 import jdbc.JDBC;
 
@@ -17,10 +18,12 @@ public class Employe implements Serializable, Comparable<Employe>
 {
 	private static final long serialVersionUID = 4795721718037994734L;
 	private String nom, prenom, password, mail;
+	private Employe administrateur;
+	private SortedSet<Employe> employes;
 	private Ligue ligue;
 	private GestionPersonnel gestionPersonnel;
-	private LocalDate dateDepart;
-	private LocalDate dateArrivee;
+	private LocalDate dateDepart, dateArrivee;
+	private int id;
 	
 	Employe(GestionPersonnel gestionPersonnel, Ligue ligue, String nom, String prenom, String mail, String password, LocalDate dateArrivee, LocalDate dateDepart)
 	{
@@ -32,6 +35,19 @@ public class Employe implements Serializable, Comparable<Employe>
 		this.ligue = ligue;
 		this.dateDepart = dateDepart;
 		this.dateArrivee = dateArrivee;
+	}
+	
+	Employe(GestionPersonnel gestionPersonnel, Ligue ligue, String nom, String prenom, String mail, String password, LocalDate dateArrivee, LocalDate datedepart, int id)
+	{
+		this.nom = nom;
+		this.prenom = prenom;
+		this.password = password;
+		this.mail = mail;
+		this.ligue = ligue;
+		this.dateArrivee = dateArrivee;
+		this.dateDepart = datedepart;
+		this.gestionPersonnel = gestionPersonnel;
+		this.id = id;
 	}
 	
 	
@@ -63,6 +79,9 @@ public class Employe implements Serializable, Comparable<Employe>
 	 * Retourne le nom de l'employé.
 	 * @return le nom de l'employé. 
 	 */
+	
+	//TODO Employe - Add exception to setters
+	
 	public void setDateArrivee(LocalDate dateArrivee) 
 	{
 		if(dateArrivee != null && dateDepart != null && dateArrivee.isBefore(dateDepart))
@@ -175,11 +194,6 @@ public class Employe implements Serializable, Comparable<Employe>
 	{
 		return ligue;
 	}
-	
-	public int getIDLigue()
-	{
-		return ligue.getId();
-	}
 
 	/**
 	 * Supprime l'employé. Si celui-ci est un administrateur, le root
@@ -218,5 +232,28 @@ public class Employe implements Serializable, Comparable<Employe>
 			res += ligue.toString();
 		return res + ")";
 	}
+	public int getId() {
+		return id;
+	}
 
+	
+	public void update(Employe employe) throws SauvegardeImpossible
+	{
+		try {
+			gestionPersonnel.updateEmp(this);
+		} catch (SauvegardeImpossible e) {
+			e.printStackTrace();
+		}
+	}
+
+
+	public void delete(Employe employe) throws SauvegardeImpossible {
+		Employe root = gestionPersonnel.getRoot();
+		if (this != root)
+		{
+			if (estAdmin(getLigue()))
+				getLigue().setAdministrateur(root);
+			gestionPersonnel.deleteEmp(this);
+		}
+	}
 }

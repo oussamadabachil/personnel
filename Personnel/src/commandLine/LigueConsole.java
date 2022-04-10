@@ -2,6 +2,7 @@ package commandLine;
 
 import static commandLineMenus.rendering.examples.util.InOut.getString;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -81,7 +82,16 @@ public class LigueConsole
 	private Option changerNom(final Ligue ligue)
 	{
 		return new Option("Renommer", "r", 
-				() -> {ligue.setNom(getString("Nouveau nom : "));});
+				() -> {
+					ligue.setNom(getString("Nouveau nom : "));
+					try {
+						ligue.updateLigue(ligue);
+					} catch (SauvegardeImpossible | SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					}
+				);
 	}
 
 	private List<Ligue> selectionnerLigue()
@@ -94,7 +104,7 @@ public class LigueConsole
 
 	private Option ajouterEmploye(final Ligue ligue)
 	{
-		return new Option("Ajouter un employÃ©", "a", 
+		return new Option("Ajouter un employé", "a", 
 				() -> 
 				{
 					/* int essai = 0;
@@ -103,15 +113,15 @@ public class LigueConsole
 					LocalDate dArrivee, dDepart;
 					
 					nom = getString("Nom : ");
-					prenom = getString("PrÃ©nom : ");
+					prenom = getString("Prénom : ");
 					mail = getString("Mail : ");
 					password = getString("Mot de passe : ");
 					try {
-						dArrivee = LocalDate.parse(getString("Date arrivÃ©e (YYYY-MM-DD) : "));
-						dDepart = LocalDate.parse(getString("Date dÃ©part (YYYY-MM-DD) : "));
+						dArrivee = LocalDate.parse(getString("Date arrivée (YYYY-MM-DD) : "));
+						dDepart = LocalDate.parse(getString("Date départ (YYYY-MM-DD) : "));
 						ligue.addEmploye(nom, prenom, mail, password, dArrivee, dDepart);
 					} catch (Exception e) {
-						System.out.println("Les dates ont Ã©tÃ© mal saisies, veuillez rÃ©essayez ...");
+						System.out.println("Les dates ont mal été saisies, veuillez réessayez ...");
 					}
 				}
 		);
@@ -120,7 +130,7 @@ public class LigueConsole
 	
 	private Menu gererEmployes(Ligue ligue)
 	{
-		Menu menu = new Menu("Gï¿½rer les employÃ©s de " + ligue.getNom(), "e");
+		Menu menu = new Menu("Gérer les employés de " + ligue.getNom(), "e");
 		menu.add(afficherEmployes(ligue));
 		menu.add(ajouterEmploye(ligue));
 		menu.add(modifierEmploye(ligue));
@@ -131,7 +141,7 @@ public class LigueConsole
 
 	private List<Employe> supprimerEmploye(final Ligue ligue)
 	{
-		return new List<>("Supprimer un employÃ©", "s", 
+		return new List<>("Supprimer un employé", "s", 
 				() -> new ArrayList<>(ligue.getEmployes()),
 				(index, element) -> {element.remove();}
 				);

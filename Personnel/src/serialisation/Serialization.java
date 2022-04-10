@@ -59,30 +59,37 @@ public class Serialization implements personnel.Passerelle
 	}
 
 	@Override
-	public void update(Ligue ligue) throws SauvegardeImpossible {
+	public void update(Ligue ligue) throws SauvegardeImpossible 
+	{
 	}
 
 	@Override
-	public void delete(Ligue ligue) throws SauvegardeImpossible {
+	public void delete(Ligue ligue) throws SauvegardeImpossible 
+	{
 	}
 	
 	@Override
-	public int selectEmp(Employe employe) throws SauvegardeImpossible {
+	public int selectEmp(Employe employe) throws SauvegardeImpossible 
+	{
 		return 0;
 	}
 
 	@Override
-	public int insertEmp(Employe employe) throws SauvegardeImpossible {
+	public int insertEmp(Employe employe) throws SauvegardeImpossible 
+	{
 		// TODO Auto-generated method stub
 		return -1;
 	}
 
 	@Override
-	public void updateEmp(Employe employe) throws SauvegardeImpossible {
+	public void updateEmp(Employe employe) throws SauvegardeImpossible 
+	{
 
 	}
 
 	@Override
-	public void deleteEmp(Employe employe) throws SauvegardeImpossible {
+	public void deleteEmp(Employe employe) throws SauvegardeImpossible 
+	{
+		
 	}
 }

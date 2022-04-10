@@ -1,6 +1,7 @@
 package personnel;
 
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.Collections;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -46,6 +47,7 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	 * Retourne le nom de la ligue.
 	 * @return le nom de la ligue.
 	 */
+	
 	
 	public int getId() {
 		return id;
@@ -121,6 +123,14 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	 * @param password le password de l'employé.
 	 * @return l'employé créé. 
 	 */
+	
+	//TODO Passer l'id en param�tres
+	
+	public Employe addEmploye(String nom, String prenom, String mail, String password, LocalDate dateArrive, LocalDate dateDepart, int id) {
+        Employe employe = new Employe(this.gestionPersonnel, this, nom, prenom, mail, password, dateArrive, dateDepart);
+        employes.add(employe);
+        return employe;
+    }
 
 	public Employe addEmploye(String nom, String prenom, String mail, String password, LocalDate dateArrivee, LocalDate dateDepart)
 	{
@@ -133,6 +143,7 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	{
 		employes.remove(employe);
 	}
+	
 	
 	/**
 	 * Supprime la ligue, entraîne la suppression de tous les employés
@@ -156,5 +167,9 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	public String toString()
 	{
 		return nom;
+	}
+
+	public void updateLigue(Ligue ligue) throws SauvegardeImpossible, SQLException{
+		gestionPersonnel.update(ligue);
 	}
 }
