@@ -13,7 +13,7 @@ public class EmployeConsole
 {
 	private Option afficher(final Employe employe)
 	{
-		return new Option("Afficher l'employé", "l", () -> {System.out.println(employe);});
+		return new Option("Afficher l'employï¿½", "l", () -> {System.out.println(employe);});
 	}
 
 	ListOption<Employe> editerEmploye()
@@ -23,7 +23,7 @@ public class EmployeConsole
 
 	Option editerEmploye(Employe employe)
 	{
-			Menu menu = new Menu("Gérer le compte " + employe.getNom(), "c");
+			Menu menu = new Menu("Gï¿½rer le compte " + employe.getNom(), "c");
 			menu.add(afficher(employe));
 			menu.add(changerNom(employe));
 			menu.add(changerPrenom(employe));
@@ -52,8 +52,8 @@ public class EmployeConsole
 	
 	private Option changerPrenom(final Employe employe)
 	{
-		return new Option("Changer le prénom", "p", () -> {
-			employe.setPrenom(getString("Nouveau prénom : "));
+		return new Option("Changer le prï¿½nom", "p", () -> {
+			employe.setPrenom(getString("Nouveau prï¿½nom : "));
 			try {
 				employe.update(employe);
 			} catch (SauvegardeImpossible e) {
@@ -91,6 +91,21 @@ public class EmployeConsole
 			}
 		});
 	}
+	/*
+	 public static void main(String [ ] arg) { 
+		  JFrame f=new JFrame("Changer Nom");  
+		    JButton b=new JButton("Changer Nom"); 
+		    JFrame c=new JFrame("Changer Nom");  
+		    JButton d=new JButton("Changer PrÃ©nom");  
+		    b.setBounds(50,100,95,30);  
+		    f.add(b); 
+		    c.add(c);
+		    f.setSize(400,400);  
+		    f.setLayout(null);  
+		    f.setVisible(true);   
+		   } 
+		   
+		   */
 	
 	private Option supprimerEmploye(final Employe employe) {
 		return new Option("supprimer", "r", () -> {
@@ -104,7 +119,7 @@ public class EmployeConsole
 	
 	private Option mettreAdmin(final Employe employe) {
 		Ligue ligue = employe.getLigue();
-		return new Option("Définir l'admin de la ligue", "k", () -> {
+		return new Option("Dï¿½finir l'admin de la ligue", "k", () -> {
 			ligue.setAdministrateur(employe);
 			try {
 				employe.update(employe);

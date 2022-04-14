@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.SortedSet;
 
-import jdbc.JDBC;
+
 
 /**
  * Employé d'une ligue hébergée par la M2L. Certains peuvent 
