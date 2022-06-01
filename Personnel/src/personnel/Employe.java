@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.SortedSet;
 
+import javax.swing.JPasswordField;
+
 
 
 /**
@@ -163,12 +165,12 @@ public class Employe implements Serializable, Comparable<Employe>
 	 * de l'employé.
 	 * @return vrai ssi le password passé en paramètre est bien celui
 	 * de l'employé.
-	 * @param password le password auquel comparer celui de l'employé.
+	 * @param string le password auquel comparer celui de l'employé.
 	 */
 	
-	public boolean checkPassword(String password)
+	public boolean checkPassword(String string)
 	{
-		return this.password.equals(password);
+		return this.password.equals(string);
 	}
 
 	/**

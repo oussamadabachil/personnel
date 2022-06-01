@@ -91,21 +91,6 @@ public class EmployeConsole
 			}
 		});
 	}
-	/*
-	 public static void main(String [ ] arg) { 
-		  JFrame f=new JFrame("Changer Nom");  
-		    JButton b=new JButton("Changer Nom"); 
-		    JFrame c=new JFrame("Changer Nom");  
-		    JButton d=new JButton("Changer Prénom");  
-		    b.setBounds(50,100,95,30);  
-		    f.add(b); 
-		    c.add(c);
-		    f.setSize(400,400);  
-		    f.setLayout(null);  
-		    f.setVisible(true);   
-		   } 
-		   
-		   */
 	
 	private Option supprimerEmploye(final Employe employe) {
 		return new Option("supprimer", "r", () -> {
